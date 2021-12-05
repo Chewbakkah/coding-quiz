@@ -1,3 +1,6 @@
+var startBtnEl = document.querySelector("#start-btn");
+var instructionsEl = document.querySelector("#instructions");
+var questionsEl = document.querySelector("#question-container");
 var questionBank = [
     {
         available: true,
@@ -37,6 +40,18 @@ function countdown() {
     }, 1000);
   }
 
+createQuestionEl = function () {
+    
+}
+
+  startBtnClicked = function () {
+    console.log("you clicked start");
+    startBtnEl.classList.add('hiden')
+    instructionsEl.classList.add('hiden')
+    questionsEl.classList.remove('hiden')
+    
+    countdown();
+}
 
 // //On start button click do the following:
 // Hide Instructions
@@ -59,3 +74,6 @@ function countdown() {
 // display Game Over and score
 // give link to high scores 
 // give button to try again 
+
+
+startBtnEl.addEventListener("click", startBtnClicked);
