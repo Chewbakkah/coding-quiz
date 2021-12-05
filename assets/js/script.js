@@ -3,8 +3,11 @@ var instructionsEl = document.querySelector("#instructions");
 var questionsEl = document.querySelector("#question-container");
 var questionEl = document.querySelector("#question");
 var answerEl = document.querySelector("#answer-buttons");
+// x = question from questionbank
 var x = 0;
+// y = answers from questionbank
 var y = 0;
+var highScore = 0;
 var questionBank = [
     {
         index: 0,
@@ -24,7 +27,80 @@ var questionBank = [
             {text: 'a', correct: false},
             {text: 'b', correct: true}
         ]
+    },
+    {
+        index: 2,
+        available: true,
+        question: 'Test Question 3 Answer B',
+        answers: [
+            {text: 'a', correct: false},
+            {text: 'b', correct: true}
+        ]
+    },
+    {
+        index: 3,
+        available: true,
+        question: 'Test Question 4 Answer B',
+        answers: [
+            {text: 'a', correct: false},
+            {text: 'b', correct: true}
+        ]
+    },
+    {
+        index: 4,
+        available: true,
+        question: 'Test Question 5 Answer B',
+        answers: [
+            {text: 'a', correct: false},
+            {text: 'b', correct: true}
+        ]
+    },
+    {
+        index: 5,
+        available: true,
+        question: 'Test Question 6 Answer B',
+        answers: [
+            {text: 'a', correct: false},
+            {text: 'b', correct: true}
+        ]
+    },
+    {
+        index: 6,
+        available: true,
+        question: 'Test Question 7 Answer B',
+        answers: [
+            {text: 'a', correct: false},
+            {text: 'b', correct: true}
+        ]
+    },
+    {
+        index: 7,
+        available: true,
+        question: 'Test Question 8 Answer B',
+        answers: [
+            {text: 'a', correct: false},
+            {text: 'b', correct: true}
+        ]
+    },
+    {
+        index: 8,
+        available: true,
+        question: 'Test Question 9 Answer B',
+        answers: [
+            {text: 'a', correct: false},
+            {text: 'b', correct: true}
+        ]
+    },
+    {
+        index: 9,
+        available: true,
+        question: 'Test Question 10 Answer B',
+        answers: [
+            {text: 'a', correct: false},
+            {text: 'b', correct: true}
+        ]
     }
+
 ]
 
 var timerEl = document.getElementById('countdown');
@@ -46,20 +122,15 @@ function countdown() {
       }
     }, 1000);
   }
-//   function showQuestion(question) {
-//     questionEl.innerText = questionBank.question
-//     questionBank.answers.forEach(answer => {
-//         const button = document.createElement('button')
-//         button.innerText = answer.text
-//         button.classList.add('btn')
-//         if (answers.correct) {
-//             button.dataset.correct = answers.correct
-//         }
-//         button.addEventListener('click', selectAnswer)
-//         answerButtonsEl.appendChild(button)
-//     })
-//   }
 
+var randomQuestionSelector = function(){
+    z = Math.floor(Math.random() * 10);
+    if (questionBank[z].available === false){
+        randomQuestionSelector();
+    }else{
+        x = z;
+    }
+}
 var populateAnswers = function (){
     let buttonEl = document.createElement('button')
     buttonEl.className = "btn"
@@ -74,7 +145,7 @@ var populateQuestion = function (){
     let pElText = document.createTextNode(questionBank[x].question)
     pEl.appendChild(pElText)
     questionEl.appendChild(pEl)
-
+    questionBank[x].available = "false";
     questionBank[x].answers.forEach(populateAnswers);
 }
 
@@ -84,6 +155,7 @@ var populateQuestion = function (){
     startBtnEl.classList.add('hiden')
     instructionsEl.classList.add('hiden')
     questionsEl.classList.remove('hiden')
+    randomQuestionSelector();
     populateQuestion();
     countdown();
 }
