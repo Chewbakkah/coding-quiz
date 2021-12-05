@@ -139,18 +139,6 @@ var answerBtnClicked = function (event) {
     }else{
         console.log("you clicked wrong answer");
     }
-//   let match0 = document.querySelector("#answer-btn0");
-//   if (match0.dataset.correct === true) {
-//     console.log("clicked correct answer");
-//   } else {
-//     console.log("clicked wrong answer");
-//   }
-//   let match1 = document.querySelector("#answer-btn1");
-//   if (match1.dataset.correct === true) {
-//     console.log("you clicked correct answer");
-//   } else {
-//     console.log("you clicked wrong answer");
-//   }
 };
 
 var populateAnswers = function () {
@@ -181,9 +169,9 @@ var populateQuestion = function () {
 
 startBtnClicked = function () {
   console.log("you clicked start");
-  startBtnEl.classList.add("hiden");
-  instructionsEl.classList.add("hiden");
-  questionsEl.classList.remove("hiden");
+  startBtnEl.classList.add("hidden");
+  instructionsEl.classList.add("hidden");
+  questionsEl.classList.remove("hidden");
   randomQuestionSelector();
   populateQuestion();
   countdown();
