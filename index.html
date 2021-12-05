@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CodeQuiz</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
     <!--main content shell-->
     <div class="container">
-        <div id="instructions" class="instructions">
-            <h1>Welcome to CodeQuiz!</h1>
-            <p>Answer the question correctly = highScore++<br />Answer the question incorrectly = timeRemaining - 2</p>
-        </div>
-        <!--quiz content-->
+      <div id="instructions" class="instructions">
+        <h1>Welcome to CodeQuiz!</h1>
+        <p>
+          Answer the question correctly = highScore++<br />Answer the question
+          incorrectly = timeRemaining - 2
+        </p>
+      </div>
+      <!--quiz content-->
+      <div id="quiz-content">
         <div id="question-container" class="hidden">
-            <!--questions-->
-            <div id="question"></div>
-            <!--answers-->
-            <div id="answer-buttons" class="btn-grid">
-
-            </div>
+          <!--questions-->
+          <div id="question"></div>
+          <!--answers-->
+          <div id="answer-buttons" class="btn-grid"></div>
         </div>
-        <!--main quiz nav buttons-->
-        <div class="controls">
-            <button id="start-btn" class="start-btn btn">START</button>
-            <button id="next-btn" class="next-btn btn hiden">NEXT</button>
+        <!--correct answer prompt-->
+        <div id="correct-prompt" class="correct-prompt hidden">
+          <h2>Correct!</h2>
         </div>
-        <div class="countdown"><h3 id="countdown"></h3></div>
+        <!--wrong answer prompt-->
+        <div id="wrong-prompt" class="wrong-prompt hidden">
+          <h2>Wrong!</h2>
+          <h3>The Correct Answer Was:</h3>
+          <h4 id="return-correct"></h4>
+        </div>
+        <div id="end-screen" class="end-screen hidden">
+            <h1>GAME OVER!</h1>
+            <h2>Your Score Is</h2>
+            <h2 id="high-score"></h2>        
+        </div>
+      </div>
+      <!--main quiz nav buttons-->
+      <div class="controls">
+        <button id="start-btn" class="start-btn btn">START</button>
+        <button id="next-btn" class="next-btn btn hidden">NEXT</button>
+      </div>
+      <div class="countdown"><h3 id="countdown"></h3></div>
     </div>
     <script src="./assets/js/script.js"></script>
-</body>
+  </body>
 </html>
