@@ -1,16 +1,23 @@
 var startBtnEl = document.querySelector("#start-btn");
 var instructionsEl = document.querySelector("#instructions");
 var questionsEl = document.querySelector("#question-container");
+var questionEl = document.querySelector("#question");
+var answerEl = document.querySelector("#answer-buttons");
+var x = 0;
+var y = 0;
 var questionBank = [
     {
+        index: 0,
         available: true,
         question: 'Test Question 1 Answer A',
         answers: [
             {text: 'a', correct: true},
-            {text: 'b', correct: false}
+            {text: 'b', correct: false},
+            {text: 'c', correct: false}
         ]
     },
     {
+        index: 1,
         available: true,
         question: 'Test Question 2 Answer B',
         answers: [
@@ -39,17 +46,45 @@ function countdown() {
       }
     }, 1000);
   }
+//   function showQuestion(question) {
+//     questionEl.innerText = questionBank.question
+//     questionBank.answers.forEach(answer => {
+//         const button = document.createElement('button')
+//         button.innerText = answer.text
+//         button.classList.add('btn')
+//         if (answers.correct) {
+//             button.dataset.correct = answers.correct
+//         }
+//         button.addEventListener('click', selectAnswer)
+//         answerButtonsEl.appendChild(button)
+//     })
+//   }
 
-createQuestionEl = function () {
-    
+var populateAnswers = function (){
+    let buttonEl = document.createElement('button')
+    buttonEl.className = "btn"
+    let buttonElText = document.createTextNode(questionBank[x].answers[y].text)
+    buttonEl.appendChild(buttonElText)
+    answerEl.appendChild(buttonEl)
+    y++;
 }
+
+var populateQuestion = function (){
+    let pEl = document.createElement('p')
+    let pElText = document.createTextNode(questionBank[x].question)
+    pEl.appendChild(pElText)
+    questionEl.appendChild(pEl)
+
+    questionBank[x].answers.forEach(populateAnswers);
+}
+
 
   startBtnClicked = function () {
     console.log("you clicked start");
     startBtnEl.classList.add('hiden')
     instructionsEl.classList.add('hiden')
     questionsEl.classList.remove('hiden')
-    
+    populateQuestion();
     countdown();
 }
 
