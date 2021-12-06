@@ -120,7 +120,7 @@ var randomArray = [];
 var user = [];
 var timerEl = document.getElementById("countdown");
 // Timer that counts down from 60
-var timeLeft = 15;
+var timeLeft = 60;
 function countdown() {
   var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
