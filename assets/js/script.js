@@ -113,7 +113,7 @@ var timerEl = document.getElementById("countdown");
 // Timer that counts down from 90
 function countdown() {
   //may have to declare this globally to subtract time on wrong answer?
-  var timeLeft = 5;
+  var timeLeft = 60;
   var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
       timerEl.textContent = timeLeft + " seconds remaining";
@@ -238,26 +238,12 @@ var clearAnswers = function () {
   removeAnswers.innerHTML = "";
 };
 
-// //On start button click do the following:
-// Hide Instructions
-// Start timer
-// display first question and answers
-// set question available to false
-
-// On answer select verify if correct.
-// If answer correct display "Correct!" Add 1 to score
-// If answer is wrong display "Wrong! Lose 2 Seconds" and deduct 2 seconds from timer.
-// On answer select display next button
-
-// On next button select:
-// clear question and answers
-// display next question and answer set
-// set question available to false
-
-// When time is zero
-// display Game Over and score
-// give link to high scores
-// give button to try again
-
 startBtnEl.addEventListener("click", startBtnClicked);
 nextBtnEl.addEventListener("click", nextBtnClicked);
+
+// things left to do 
+// remove time for wrong answers 
+// load high score to local Storage
+// link high scores to end page 
+// add retry to end page 
+// reset variables for retry 
