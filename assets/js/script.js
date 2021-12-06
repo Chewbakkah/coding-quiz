@@ -16,6 +16,7 @@ var countdownEl = document.querySelector("#countdown");
 var userNameInput = document.querySelector("#user-name");
 var formEl = document.querySelector("#user-name-form");
 var submitVerifyEl = document.querySelector("#submit-username");
+var highScoresBtnEl = document.querySelector("#high-scores");
 // x = question from questionbank
 var x = 0;
 // y = answers from questionbank
@@ -117,7 +118,7 @@ var randomArray = [];
 var user = [];
 var timerEl = document.getElementById("countdown");
 // Timer that counts down from 60
-var timeLeft = 60;
+var timeLeft = 15;
 function countdown() {
   var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
@@ -135,7 +136,7 @@ function countdown() {
 }
 var saveUser = function(){
     localStorage.setItem("user", JSON.stringify(user));
-}
+};
 
 var loadUser = function() {
     var savedUser = localStorage.getItem("user");
@@ -144,7 +145,10 @@ var loadUser = function() {
         return false;
     }
     savedUser = JSON.parse(savedUser);
-    user.push(savedUser);
+    for (var i = 0; i < savedUser.length; i++){
+        user.push(savedUser[i]);
+    }
+    
 }
 
 var endScreen = function () {
@@ -177,6 +181,7 @@ var endScreen = function () {
     user.push(userInfo);
     saveUser();
     retryBtnEl.classList.remove("hidden");
+    highScoresBtnEl.classList.remove("hidden");
   }  
 };
 
@@ -282,7 +287,16 @@ var submitBtnClicked = function (event) {
   endScreen();
 };
 
+var sortScoreboard = function (){
+    user.sort(function(a, b) {
+        return b.score - a.score;
+    });
 
+
+
+
+
+}
 
 var clearQuestion = function () {
   var removeQuestion = document.getElementById("remove-later");
@@ -298,7 +312,9 @@ startBtnEl.addEventListener("click", startBtnClicked);
 nextBtnEl.addEventListener("click", nextBtnClicked);
 retryBtnEl.addEventListener("click", retryBtnClicked);
 submitBtnEl.addEventListener("click", submitBtnClicked);
+highScoresBtnEl.addEventListener("click", sortScoreboard);
 // things left to do
-// load high score to local Storage
-// link high scores to end page
+//make high score page
+//create high score sorting
+// load high scores to page
 // style everything
