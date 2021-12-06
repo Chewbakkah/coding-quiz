@@ -18,6 +18,7 @@ var formEl = document.querySelector("#user-name-form");
 var submitVerifyEl = document.querySelector("#submit-username");
 var highScoresBtnEl = document.querySelector("#high-scores");
 var scoreboardEl = document.querySelector("#scoreboard");
+var scoreboardListEl = document.querySelector("#scoreboard-list");
 // x = question from questionbank
 var x = 0;
 // y = answers from questionbank
@@ -289,6 +290,7 @@ var submitBtnClicked = function (event) {
 };
 
 var showScoreboard = function (){
+
     user.sort(function(a, b) {
         return b.score - a.score;
     });
@@ -298,8 +300,15 @@ var showScoreboard = function (){
     //show scoreboard
     scoreboardEl.classList.remove("hidden");
     for (var i = 0; i < user.length; i++){
-        scoreboardEl.innerHTML = user[i].username + ": " + user[i].score + "<br />";
-        //this is overwriting scores. use unordered list and add li for each score instead.
+        if (i === 10){
+            break;
+        }
+        let listEl = document.createElement("li");
+        let listElText = document.createTextNode(user[i].username + ": " + user[i].score);
+        console.log(listElText);
+        // listEl.innerHTML = user[i].username + ": " + user[i].score;
+        listEl.appendChild(listElText);
+        scoreboardListEl.append(listEl);        
     }
 
 }
