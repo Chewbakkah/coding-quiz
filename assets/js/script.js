@@ -137,6 +137,16 @@ var saveUser = function(){
     localStorage.setItem("user", JSON.stringify(user));
 }
 
+var loadUser = function() {
+    var savedUser = localStorage.getItem("user");
+    if (!savedUser) {
+        console.log("triggered");
+        return false;
+    }
+    savedUser = JSON.parse(savedUser);
+    user.push(savedUser);
+}
+
 var endScreen = function () {
   if (countdownEl.classList != "hidden") {
     countdownEl.classList.add("hidden");
@@ -234,6 +244,7 @@ var populateQuestion = function () {
 
 var startBtnClicked = function () {
   countdown();
+  loadUser();
   formEl.classList.add("hidden");
   startBtnEl.classList.add("hidden");
   instructionsEl.classList.add("hidden");
@@ -271,14 +282,7 @@ var submitBtnClicked = function (event) {
   endScreen();
 };
 
-function requiredUserName() {
-  var empty = document.forms["form1"].value;
-  if (empty == "") {
-    formEl.classList.remove("hidden");
-    alert("Please Enter Username");
-    return false;
-  }
-}
+
 
 var clearQuestion = function () {
   var removeQuestion = document.getElementById("remove-later");
