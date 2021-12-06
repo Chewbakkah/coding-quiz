@@ -17,6 +17,7 @@ var userNameInput = document.querySelector("#user-name");
 var formEl = document.querySelector("#user-name-form");
 var submitVerifyEl = document.querySelector("#submit-username");
 var highScoresBtnEl = document.querySelector("#high-scores");
+var scoreboardEl = document.querySelector("#scoreboard");
 // x = question from questionbank
 var x = 0;
 // y = answers from questionbank
@@ -287,14 +288,19 @@ var submitBtnClicked = function (event) {
   endScreen();
 };
 
-var sortScoreboard = function (){
+var showScoreboard = function (){
     user.sort(function(a, b) {
         return b.score - a.score;
     });
-
-
-
-
+    //hide endgame screen
+    endScreenEl.classList.add("hidden");
+    highScoresBtnEl.classList.add("hidden");
+    //show scoreboard
+    scoreboardEl.classList.remove("hidden");
+    for (var i = 0; i < user.length; i++){
+        scoreboardEl.innerHTML = user[i].username + ": " + user[i].score + "<br />";
+        //this is overwriting scores. use unordered list and add li for each score instead.
+    }
 
 }
 
@@ -312,7 +318,7 @@ startBtnEl.addEventListener("click", startBtnClicked);
 nextBtnEl.addEventListener("click", nextBtnClicked);
 retryBtnEl.addEventListener("click", retryBtnClicked);
 submitBtnEl.addEventListener("click", submitBtnClicked);
-highScoresBtnEl.addEventListener("click", sortScoreboard);
+highScoresBtnEl.addEventListener("click", showScoreboard);
 // things left to do
 //make high score page
 //create high score sorting
