@@ -8,6 +8,8 @@ var correctAnswerEl = document.querySelector("#correct-prompt");
 var wrongAnswerEl = document.querySelector("#wrong-prompt");
 var returnCorrectEl = document.querySelector("#return-correct");
 var removeLaterEl = document.querySelector("#remove-later");
+var endScreenEl = document.querySelector("#end-screen");
+var highScoreEl = document.querySelector("#high-score");
 // x = question from questionbank
 var x = 0;
 // y = answers from questionbank
@@ -111,7 +113,7 @@ var timerEl = document.getElementById("countdown");
 // Timer that counts down from 90
 function countdown() {
   //may have to declare this globally to subtract time on wrong answer?
-  var timeLeft = 90;
+  var timeLeft = 5;
   var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
       timerEl.textContent = timeLeft + " seconds remaining";
@@ -128,14 +130,20 @@ function countdown() {
 }
 
 var endScreen = function () {
-  // if(questionsEl.classList != "hidden"){
-  // questionsEl.classList.add("hidden")
-  // }
-  // if(El.classList != "hidden"){
-  //     questionsEl.classList.add("hidden")
-  //     }
-
-  console.log("game over");
+  if (questionsEl.classList != "hidden") {
+    questionsEl.classList.add("hidden");
+  }
+  if (correctAnswerEl.classList != "hidden") {
+    correctAnswerEl.classList.add("hidden");
+  }
+  if (wrongAnswerEl.classList != "hidden") {
+    wrongAnswerEl.classList.add("hidden");
+  }
+  if (nextBtnEl.classList != "hidden") {
+    nextBtnEl.classList.add("hidden");
+  }
+  endScreenEl.classList.remove("hidden");
+  highScoreEl.textContent = highScore;
 };
 
 var randomQuestionSelector = function () {
@@ -153,11 +161,9 @@ var answerBtnClicked = function (event) {
   let selectedBtn = event.target;
   let correctBtn = selectedBtn.dataset.correct;
   if (correctBtn === "true") {
-    console.log("you clicked correct answer");
     correctAnswerEl.classList.remove("hidden");
     highScore++;
   } else {
-    console.log("you clicked wrong answer");
     wrongAnswerEl.classList.remove("hidden");
   }
   questionEl.classList.add("hidden");
@@ -168,7 +174,6 @@ var answerBtnClicked = function (event) {
 var populateAnswers = function () {
   var n = questionBank[x].answers.length - 1;
   for (i = 0; i < n; i++) {
-    console.log("button created");
     let buttonEl = document.createElement("button");
     buttonEl.className = "btn answer-btn";
     let buttonElText = document.createTextNode(questionBank[x].answers[y].text);
@@ -198,7 +203,6 @@ var populateQuestion = function () {
 };
 
 var startBtnClicked = function () {
-  console.log("you clicked start");
   startBtnEl.classList.add("hidden");
   instructionsEl.classList.add("hidden");
   questionsEl.classList.remove("hidden");
@@ -208,7 +212,6 @@ var startBtnClicked = function () {
 };
 
 var nextBtnClicked = function () {
-  console.log("you clicked next");
   y = 0;
   clearQuestion();
   clearAnswers();
