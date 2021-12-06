@@ -37,13 +37,21 @@
         </div>
         <div id="end-screen" class="end-screen hidden">
             <h1>GAME OVER!</h1>
+            <h1 id="submit-username" class="hidden">PLEASE SUBMIT USERNAME</h1>
             <h2>Your Score</h2>
             <h2 id="high-score"></h2>        
         </div>
       </div>
       <!--main quiz nav buttons-->
       <div class="controls">
-        <button id="start-btn" class="start-btn btn">START</button>
+          <form id="user-name-form" class="user-name-form" name="form1" method="POST" onsubmit="requiredUserName()">
+            <div class="input-group">
+                <label for="user-name">User Name</label>
+                <input type="text" name="user-name" id="user-name" placeholder="Get Creative" />
+              </div>
+              <button id="submit-btn" class="submit-btn btn hidden">SUBMIT</button>
+          </form>
+        <button id="start-btn" class="start-btn btn ">START</button>
         <button id="next-btn" class="next-btn btn hidden">NEXT</button>
         <button id="retry-btn" class="retry-btn btn hidden">RETRY?</button>
       </div>

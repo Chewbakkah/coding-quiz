@@ -1,3 +1,4 @@
+var submitBtnEl = document.querySelector("#submit-btn");
 var startBtnEl = document.querySelector("#start-btn");
 var nextBtnEl = document.querySelector("#next-btn");
 var retryBtnEl = document.querySelector("#retry-btn");
@@ -12,6 +13,9 @@ var removeLaterEl = document.querySelector("#remove-later");
 var endScreenEl = document.querySelector("#end-screen");
 var highScoreEl = document.querySelector("#high-score");
 var countdownEl = document.querySelector("#countdown");
+var userNameInput = document.querySelector("#user-name");
+var formEl = document.querySelector("#user-name-form");
+var submitVerifyEl = document.querySelector("#submit-username");
 // x = question from questionbank
 var x = 0;
 // y = answers from questionbank
@@ -120,7 +124,7 @@ var questionBank = [
   },
 ];
 var randomArray = [];
-
+var user = [];
 var timerEl = document.getElementById("countdown");
 // Timer that counts down from 60
 var timeLeft = 60;
@@ -138,6 +142,9 @@ function countdown() {
       endScreen();
     }
   }, 1000);
+}
+var saveUser = function(){
+    localStorage.setItem("user", JSON.stringify(user));
 }
 
 var endScreen = function () {
@@ -158,12 +165,19 @@ var endScreen = function () {
   }
   endScreenEl.classList.remove("hidden");
   highScoreEl.textContent = highScore;
-  retryBtnEl.classList.remove("hidden");
-//   randomArray = [];
-//   x = 0;
-//   y = 0;
-//   startBtnEl.textContent = "Retry?";
-//   startBtnEl.classList.remove("hidden");
+  if (userNameInput.value == "") {
+    submitVerifyEl.classList.remove("hidden");
+    formEl.classList.remove("hidden");
+    submitBtnEl.classList.remove("hidden");
+  } else {
+    var userInfo = {
+      username: userNameInput.value.trim(),
+      score: highScore,
+    };
+    user.push(userInfo);
+    saveUser();
+    retryBtnEl.classList.remove("hidden");
+  }  
 };
 
 var randomQuestionSelector = function () {
@@ -230,6 +244,7 @@ var populateQuestion = function () {
 
 var startBtnClicked = function () {
   countdown();
+  formEl.classList.add("hidden");
   startBtnEl.classList.add("hidden");
   instructionsEl.classList.add("hidden");
   questionsEl.classList.remove("hidden");
@@ -254,8 +269,25 @@ var nextBtnClicked = function () {
   populateQuestion();
 };
 
-var retryBtnClicked = function (){
-    window.location.reload();
+var retryBtnClicked = function () {
+  window.location.reload();
+};
+
+var submitBtnClicked = function (event) {
+  event.preventDefault();
+  submitVerifyEl.classList.add("hidden");
+  submitBtnEl.classList.add("hidden");
+  formEl.classList.add("hidden");
+  endScreen();
+};
+
+function requiredUserName() {
+  var empty = document.forms["form1"].value;
+  if (empty == "") {
+    formEl.classList.remove("hidden");
+    alert("Please Enter Username");
+    return false;
+  }
 }
 
 var clearQuestion = function () {
@@ -271,7 +303,7 @@ var clearAnswers = function () {
 startBtnEl.addEventListener("click", startBtnClicked);
 nextBtnEl.addEventListener("click", nextBtnClicked);
 retryBtnEl.addEventListener("click", retryBtnClicked);
-
+submitBtnEl.addEventListener("click", submitBtnClicked);
 // things left to do
 // load high score to local Storage
 // link high scores to end page
