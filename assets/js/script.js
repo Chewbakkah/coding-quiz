@@ -18,7 +18,7 @@ var highScore = 0;
 var questionBank = [
   {
     index: 0,
-    available: true,
+    available: "yes",
     question: "Test Question 1 Answer A",
     answers: [
       { text: "a", correct: true },
@@ -28,89 +28,100 @@ var questionBank = [
   },
   {
     index: 1,
-    available: true,
+    available: "yes",
     question: "Test Question 2 Answer B",
     answers: [
-      { text: "d", correct: false },
-      { text: "e", correct: true },
+      { text: "a", correct: true },
+      { text: "b", correct: false },
+      { text: "c", correct: false },
     ],
   },
   {
     index: 2,
-    available: true,
+    available: "yes",
     question: "Test Question 3 Answer B",
     answers: [
-      { text: "f", correct: false },
-      { text: "g", correct: true },
+      { text: "a", correct: true },
+      { text: "b", correct: false },
+      { text: "c", correct: false },
     ],
   },
   {
     index: 3,
-    available: true,
+    available: "yes",
     question: "Test Question 4 Answer B",
     answers: [
-      { text: "h", correct: false },
-      { text: "i", correct: true },
+      { text: "a", correct: true },
+      { text: "b", correct: false },
+      { text: "c", correct: false },
     ],
   },
   {
     index: 4,
-    available: true,
+    available: "yes",
     question: "Test Question 5 Answer B",
     answers: [
-      { text: "j", correct: false },
-      { text: "k", correct: true },
+      { text: "a", correct: true },
+      { text: "b", correct: false },
+      { text: "c", correct: false },
     ],
   },
   {
     index: 5,
-    available: true,
+    available: "yes",
     question: "Test Question 6 Answer B",
     answers: [
-      { text: "l", correct: false },
-      { text: "m", correct: true },
+      { text: "a", correct: true },
+      { text: "b", correct: false },
+      { text: "c", correct: false },
     ],
   },
   {
     index: 6,
-    available: true,
+    available: "yes",
     question: "Test Question 7 Answer B",
     answers: [
-      { text: "n", correct: false },
-      { text: "o", correct: true },
+      { text: "a", correct: true },
+      { text: "b", correct: false },
+      { text: "c", correct: false },
     ],
   },
   {
     index: 7,
-    available: true,
+    available: "yes",
     question: "Test Question 8 Answer B",
     answers: [
-      { text: "p", correct: false },
-      { text: "q", correct: true },
+      { text: "a", correct: true },
+      { text: "b", correct: false },
+      { text: "c", correct: false },
     ],
   },
   {
     index: 8,
-    available: true,
+    available: "yes",
     question: "Test Question 9 Answer B",
     answers: [
-      { text: "r", correct: false },
-      { text: "s", correct: true },
+      { text: "a", correct: true },
+      { text: "b", correct: false },
+      { text: "c", correct: false },
     ],
   },
   {
     index: 9,
-    available: true,
+    available: "yes",
     question: "Test Question 10 Answer B",
     answers: [
-      { text: "t", correct: false },
-      { text: "u", correct: true },
+      { text: "a", correct: true },
+      { text: "b", correct: false },
+      { text: "c", correct: false },
     ],
   },
 ];
+var randomArray = [];
 
 var timerEl = document.getElementById("countdown");
 // Timer that counts down from 90
+// var timeLeft = 60;
 function countdown() {
   //may have to declare this globally to subtract time on wrong answer?
   var timeLeft = 60;
@@ -147,14 +158,28 @@ var endScreen = function () {
 };
 
 var randomQuestionSelector = function () {
-  z = Math.floor(Math.random() * 10);
-  if (questionBank[z].available === true) {
-    x = z;
-  } else if (questionBank[z].available === false) {
-    randomQuestionSelector;
-  } else {
-    endScreen();
-  }
+    if(randomArray.length === questionBank.length){
+        endScreen();
+    }
+  var z = 0;
+  var defineZ = function () {
+    z = Math.floor(Math.random() * questionBank.length);
+    if (randomArray.includes(z)) {
+      defineZ();
+    } else {
+      x = z;
+      randomArray.push(z);
+    }
+  };
+
+//   z = Math.floor(Math.random() * questionBank.length);
+//   if (questionBank[z].available === "yes") {
+//     x = z;
+//   } else if (questionBank[z].available === "no") {
+//     randomQuestionSelector;
+//   } else {
+//     endScreen();
+//   }
 };
 
 var answerBtnClicked = function (event) {
@@ -165,6 +190,7 @@ var answerBtnClicked = function (event) {
     highScore++;
   } else {
     wrongAnswerEl.classList.remove("hidden");
+    // timeLeft = timeLeft - 5;
   }
   questionEl.classList.add("hidden");
   answerEl.classList.add("hidden");
@@ -172,8 +198,8 @@ var answerBtnClicked = function (event) {
 };
 
 var populateAnswers = function () {
-  var n = questionBank[x].answers.length - 1;
-  for (i = 0; i < n; i++) {
+  var n = questionBank[x].answers.length - 2;
+  for (var i = 0; i < n; i++) {
     let buttonEl = document.createElement("button");
     buttonEl.className = "btn answer-btn";
     let buttonElText = document.createTextNode(questionBank[x].answers[y].text);
@@ -194,7 +220,7 @@ var populateQuestion = function () {
   let pElText = document.createTextNode(questionBank[x].question);
   pEl.appendChild(pElText);
   questionEl.appendChild(pEl);
-  questionBank[x].available = "false";
+  questionBank[x].available = "no";
   questionBank[x].answers.forEach(populateAnswers);
   var setId = document.querySelectorAll(".answer-btn");
   for (var i = 0; i < setId.length; i++) {
@@ -203,12 +229,12 @@ var populateQuestion = function () {
 };
 
 var startBtnClicked = function () {
+  countdown();
   startBtnEl.classList.add("hidden");
   instructionsEl.classList.add("hidden");
   questionsEl.classList.remove("hidden");
   randomQuestionSelector();
   populateQuestion();
-  countdown();
 };
 
 var nextBtnClicked = function () {
@@ -241,9 +267,9 @@ var clearAnswers = function () {
 startBtnEl.addEventListener("click", startBtnClicked);
 nextBtnEl.addEventListener("click", nextBtnClicked);
 
-// things left to do 
-// remove time for wrong answers 
+// things left to do
+// remove time for wrong answers
 // load high score to local Storage
-// link high scores to end page 
-// add retry to end page 
-// reset variables for retry 
+// link high scores to end page
+// add retry to end page
+// reset variables for retry
