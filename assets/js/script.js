@@ -1,5 +1,6 @@
 var startBtnEl = document.querySelector("#start-btn");
 var nextBtnEl = document.querySelector("#next-btn");
+var retryBtnEl = document.querySelector("#retry-btn");
 var instructionsEl = document.querySelector("#instructions");
 var questionsEl = document.querySelector("#question-container");
 var questionEl = document.querySelector("#question");
@@ -10,6 +11,7 @@ var returnCorrectEl = document.querySelector("#return-correct");
 var removeLaterEl = document.querySelector("#remove-later");
 var endScreenEl = document.querySelector("#end-screen");
 var highScoreEl = document.querySelector("#high-score");
+var countdownEl = document.querySelector("#countdown");
 // x = question from questionbank
 var x = 0;
 // y = answers from questionbank
@@ -120,11 +122,9 @@ var questionBank = [
 var randomArray = [];
 
 var timerEl = document.getElementById("countdown");
-// Timer that counts down from 90
-// var timeLeft = 60;
+// Timer that counts down from 60
+var timeLeft = 60;
 function countdown() {
-  //may have to declare this globally to subtract time on wrong answer?
-  var timeLeft = 60;
   var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
       timerEl.textContent = timeLeft + " seconds remaining";
@@ -141,6 +141,9 @@ function countdown() {
 }
 
 var endScreen = function () {
+  if (countdownEl.classList != "hidden") {
+    countdownEl.classList.add("hidden");
+  }
   if (questionsEl.classList != "hidden") {
     questionsEl.classList.add("hidden");
   }
@@ -155,31 +158,33 @@ var endScreen = function () {
   }
   endScreenEl.classList.remove("hidden");
   highScoreEl.textContent = highScore;
+  retryBtnEl.classList.remove("hidden");
+//   randomArray = [];
+//   x = 0;
+//   y = 0;
+//   startBtnEl.textContent = "Retry?";
+//   startBtnEl.classList.remove("hidden");
 };
 
 var randomQuestionSelector = function () {
-    if(randomArray.length === questionBank.length){
-        endScreen();
-    }
-  var z = 0;
-  var defineZ = function () {
-    z = Math.floor(Math.random() * questionBank.length);
-    if (randomArray.includes(z)) {
-      defineZ();
-    } else {
-      x = z;
-      randomArray.push(z);
-    }
-  };
-
-//   z = Math.floor(Math.random() * questionBank.length);
-//   if (questionBank[z].available === "yes") {
-//     x = z;
-//   } else if (questionBank[z].available === "no") {
-//     randomQuestionSelector;
-//   } else {
-//     endScreen();
-//   }
+  if (randomArray.length === 10) {
+    console.log("ended random");
+    endScreen();
+  } else {
+    var z = 0;
+    var defineZ = function () {
+      z = Math.floor(Math.random() * 10);
+      if (randomArray.includes(z)) {
+        console.log("passed 1");
+        defineZ();
+      } else {
+        console.log("passed 2");
+        x = z;
+        randomArray.push(z);
+      }
+    };
+    defineZ();
+  }
 };
 
 var answerBtnClicked = function (event) {
@@ -190,7 +195,7 @@ var answerBtnClicked = function (event) {
     highScore++;
   } else {
     wrongAnswerEl.classList.remove("hidden");
-    // timeLeft = timeLeft - 5;
+    timeLeft = timeLeft - 5;
   }
   questionEl.classList.add("hidden");
   answerEl.classList.add("hidden");
@@ -220,12 +225,7 @@ var populateQuestion = function () {
   let pElText = document.createTextNode(questionBank[x].question);
   pEl.appendChild(pElText);
   questionEl.appendChild(pEl);
-  questionBank[x].available = "no";
   questionBank[x].answers.forEach(populateAnswers);
-  var setId = document.querySelectorAll(".answer-btn");
-  for (var i = 0; i < setId.length; i++) {
-    setId[i].id = "answer-btn" + i;
-  }
 };
 
 var startBtnClicked = function () {
@@ -254,6 +254,10 @@ var nextBtnClicked = function () {
   populateQuestion();
 };
 
+var retryBtnClicked = function (){
+    window.location.reload();
+}
+
 var clearQuestion = function () {
   var removeQuestion = document.getElementById("remove-later");
   removeQuestion.remove();
@@ -266,10 +270,9 @@ var clearAnswers = function () {
 
 startBtnEl.addEventListener("click", startBtnClicked);
 nextBtnEl.addEventListener("click", nextBtnClicked);
+retryBtnEl.addEventListener("click", retryBtnClicked);
 
 // things left to do
-// remove time for wrong answers
 // load high score to local Storage
 // link high scores to end page
-// add retry to end page
-// reset variables for retry
+// style everything
