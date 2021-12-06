@@ -23,103 +23,93 @@ var y = 0;
 var highScore = 0;
 var questionBank = [
   {
-    index: 0,
-    available: "yes",
-    question: "Test Question 1 Answer A",
+    question: "Inside which HTML element do we put the JavaScript?",
     answers: [
-      { text: "a", correct: true },
-      { text: "b", correct: false },
-      { text: "c", correct: false },
+      { text: "<javascript>", correct: false },
+      { text: "<scripting>", correct: false },
+      { text: "<script>", correct: true },
+      { text: "<js>", correct: false }
     ],
   },
   {
-    index: 1,
-    available: "yes",
-    question: "Test Question 2 Answer B",
+    question: "Where is the correct place to insert a JavaScript?",
     answers: [
-      { text: "a", correct: true },
-      { text: "b", correct: false },
-      { text: "c", correct: false },
+      { text: "The <body> section", correct: false },
+      { text: "The <head> section", correct: false },
+      { text: "Both the <head> and <body> will work", correct: true },
+      { text: "Neither", correct: false }
     ],
   },
   {
-    index: 2,
-    available: "yes",
-    question: "Test Question 3 Answer B",
+    question: "What is the correct syntax for referring to an external script called "xxx.js"?",
     answers: [
-      { text: "a", correct: true },
-      { text: "b", correct: false },
-      { text: "c", correct: false },
+        { text: "<script src=\"xxx.js\">", correct: true },
+        { text: "<script name=\"xxx.js\">", correct: false },
+        { text: "<script href=\"xxx.js\">", correct: false },
+        { text: "None of these", correct: false }
     ],
   },
   {
-    index: 3,
-    available: "yes",
-    question: "Test Question 4 Answer B",
+    question: "How do you write \"Hello World\" in an alert box?",
     answers: [
-      { text: "a", correct: true },
-      { text: "b", correct: false },
-      { text: "c", correct: false },
+        { text: "msgBox(\"Hellow World\");", correct: false },
+        { text: "alert(\"Hellow World\");", correct: true },
+        { text: "alertBox(\"Hello World\");", correct: false },
+        { text: "msg(\"Hello World\");", correct: false }
     ],
   },
   {
-    index: 4,
-    available: "yes",
-    question: "Test Question 5 Answer B",
+    question: "How do you call a function named "myFunction"?",
     answers: [
-      { text: "a", correct: true },
-      { text: "b", correct: false },
-      { text: "c", correct: false },
+        { text: "myFunction()", correct: true },
+        { text: "call myFunction()", correct: false },
+        { text: "HEY LADY!", correct: false },
+        { text: "call function myFunction()", correct: false }
     ],
   },
   {
-    index: 5,
-    available: "yes",
-    question: "Test Question 6 Answer B",
+    question: "How to write an IF statement in JavaScript?",
     answers: [
-      { text: "a", correct: true },
-      { text: "b", correct: false },
-      { text: "c", correct: false },
+        { text: "if i=5", correct: false },
+        { text: "if i = 5 then", correct: false },
+        { text: "if i == 5 then", correct: false },
+        { text: "if (i == 5)", correct: true }
     ],
   },
   {
-    index: 6,
-    available: "yes",
-    question: "Test Question 7 Answer B",
+    question: "How to write an IF statement for executing some code if \"i\" is NOT equal to 5?",
     answers: [
-      { text: "a", correct: true },
-      { text: "b", correct: false },
-      { text: "c", correct: false },
+        { text: "if (i != 5)", correct: true },
+        { text: "if (i<>5)", correct: false },
+        { text: "if i =! 5 then", correct: false },
+        { text: "if i<>5", correct: false }
     ],
   },
   {
-    index: 7,
-    available: "yes",
-    question: "Test Question 8 Answer B",
+    question: "How can you add a comment in a JavaScript?",
     answers: [
-      { text: "a", correct: true },
-      { text: "b", correct: false },
-      { text: "c", correct: false },
+        { text: "<!--This is a comment-->", correct: false },
+        { text: "'This is a comment", correct: false },
+        { text: "//This is a comment", correct: true },
+        { text: "!!This is a comment!!", correct: false }
     ],
   },
   {
-    index: 8,
-    available: "yes",
-    question: "Test Question 9 Answer B",
+    question: "How do you round the number 7.25, to the nearest integer?",
     answers: [
-      { text: "a", correct: true },
-      { text: "b", correct: false },
-      { text: "c", correct: false },
+        { text: "Math.rnd(7.25)", correct: false },
+        { text: "rnd(7.25)", correct: false },
+        { text: "Math.round(7.25)", correct: true },
+        { text: "round(7.25)", correct: false }
     ],
   },
   {
-    index: 9,
-    available: "yes",
-    question: "Test Question 10 Answer B",
+    question: "How do you find the number with the highest value of x and y?",
     answers: [
-      { text: "a", correct: true },
-      { text: "b", correct: false },
-      { text: "c", correct: false },
+        { text: "ceil(x,y)", correct: false },
+        { text: "Math.ceil(x,y)", correct: false },
+        { text: "Math.max(x,y)", correct: true },
+        { text: "top(x,y)", correct: false }
     ],
   },
 ];
