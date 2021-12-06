@@ -41,7 +41,7 @@ var questionBank = [
     ],
   },
   {
-    question: "What is the correct syntax for referring to an external script called "xxx.js"?",
+    question: "What is the correct syntax for referring to an external script called \"xxx.js\"?",
     answers: [
         { text: "<script src=\"xxx.js\">", correct: true },
         { text: "<script name=\"xxx.js\">", correct: false },
@@ -59,7 +59,7 @@ var questionBank = [
     ],
   },
   {
-    question: "How do you call a function named "myFunction"?",
+    question: "How do you call a function named \"myFunction\"?",
     answers: [
         { text: "myFunction()", correct: true },
         { text: "call myFunction()", correct: false },
@@ -207,7 +207,7 @@ var answerBtnClicked = function (event) {
 };
 
 var populateAnswers = function () {
-  var n = questionBank[x].answers.length - 2;
+  var n = questionBank[x].answers.length -3;
   for (var i = 0; i < n; i++) {
     let buttonEl = document.createElement("button");
     buttonEl.className = "btn answer-btn";
