@@ -313,7 +313,7 @@ var clearQuestion = function () {
   removeQuestion.remove();
 };
 
-var clearrAnswers = function () {
+var clearAnswers = function () {
   var removeAnswers = document.getElementById("answer-buttons");
   removeAnswers.innerHTML = "";
 };

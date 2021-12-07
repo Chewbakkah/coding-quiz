@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
+    <main>
     <!--main content shell-->
     <div class="container">
-      <div id="instructions" class="instructions">
+      <div id="instructions" class="instructions flex">
         <h1>Welcome to CodeQuiz!</h1>
         <p>
           Answer the question correctly = highScore++<br />Answer the question
@@ -18,25 +19,24 @@
         </p>
       </div>
       <!--quiz content-->
-      <div id="quiz-content">
-        <div><img src="assets\images\background.gif"></div>
-        <div id="question-container" class="hidden">
+      <div id="quiz-content" class="flex">
+          <div id="question-container" class="hidden">
           <!--questions-->
           <div id="question"></div>
           <!--answers-->
-          <div id="answer-buttons" class="btn-grid"></div>
+          <div id="answer-buttons" class="btn-grid flex"></div>
         </div>
         <!--correct answer prompt-->
-        <div id="correct-prompt" class="correct-prompt hidden">
+        <div id="correct-prompt" class="correct-prompt hidden flex">
           <h2>Correct!</h2>
         </div>
         <!--wrong answer prompt-->
-        <div id="wrong-prompt" class="wrong-prompt hidden">
+        <div id="wrong-prompt" class="wrong-prompt hidden flex">
           <h2>Wrong!</h2>
           <h3>The Correct Answer Was:</h3>
           <h4 id="return-correct"></h4>
         </div>
-        <div id="end-screen" class="end-screen hidden">
+        <div id="end-screen" class="end-screen hidden flex">
             <h1>GAME OVER!</h1>
             <h1 id="submit-username" class="hidden">PLEASE SUBMIT USERNAME</h1>
             <h2>Your Score</h2>
@@ -48,7 +48,7 @@
           <ul id="scoreboard-list" class="scoreboard-list"></ul>
       </div>
       <!--main quiz nav buttons-->
-      <div class="controls">
+      <div class="controls flex">
           <form id="user-name-form" class="user-name-form" name="form1" method="POST">
             <div class="input-group">
                 <label for="user-name">User Name</label>
@@ -63,6 +63,7 @@
       </div>
       <div class="countdown"><h3 id="countdown"></h3></div>
     </div>
+    </main>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
