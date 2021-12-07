@@ -31,7 +31,7 @@ var questionBank = [
       { text: "<javascript>", correct: false },
       { text: "<scripting>", correct: false },
       { text: "<script>", correct: true },
-      { text: "<js>", correct: false }
+      { text: "<js>", correct: false },
     ],
   },
   {
@@ -40,79 +40,81 @@ var questionBank = [
       { text: "The <body> section", correct: false },
       { text: "The <head> section", correct: false },
       { text: "Both the <head> and <body> will work", correct: true },
-      { text: "Neither", correct: false }
+      { text: "Neither", correct: false },
     ],
   },
   {
-    question: "What is the correct syntax for referring to an external script called \"xxx.js\"?",
+    question:
+      'What is the correct syntax for referring to an external script called "xxx.js"?',
     answers: [
-        { text: "<script src=\"xxx.js\">", correct: true },
-        { text: "<script name=\"xxx.js\">", correct: false },
-        { text: "<script href=\"xxx.js\">", correct: false },
-        { text: "None of these", correct: false }
+      { text: '<script src="xxx.js">', correct: true },
+      { text: '<script name="xxx.js">', correct: false },
+      { text: '<script href="xxx.js">', correct: false },
+      { text: "None of these", correct: false },
     ],
   },
   {
-    question: "How do you write \"Hello World\" in an alert box?",
+    question: 'How do you write "Hello World" in an alert box?',
     answers: [
-        { text: "msgBox(\"Hellow World\");", correct: false },
-        { text: "alert(\"Hellow World\");", correct: true },
-        { text: "alertBox(\"Hello World\");", correct: false },
-        { text: "msg(\"Hello World\");", correct: false }
+      { text: 'msgBox("Hellow World");', correct: false },
+      { text: 'alert("Hellow World");', correct: true },
+      { text: 'alertBox("Hello World");', correct: false },
+      { text: 'msg("Hello World");', correct: false },
     ],
   },
   {
-    question: "How do you call a function named \"myFunction\"?",
+    question: 'How do you call a function named "myFunction"?',
     answers: [
-        { text: "myFunction()", correct: true },
-        { text: "call myFunction()", correct: false },
-        { text: "HEY LADY!", correct: false },
-        { text: "call function myFunction()", correct: false }
+      { text: "myFunction()", correct: true },
+      { text: "call myFunction()", correct: false },
+      { text: "HEY LADY!", correct: false },
+      { text: "call function myFunction()", correct: false },
     ],
   },
   {
     question: "How to write an IF statement in JavaScript?",
     answers: [
-        { text: "if i=5", correct: false },
-        { text: "if i = 5 then", correct: false },
-        { text: "if i == 5 then", correct: false },
-        { text: "if (i == 5)", correct: true }
+      { text: "if i=5", correct: false },
+      { text: "if i = 5 then", correct: false },
+      { text: "if i == 5 then", correct: false },
+      { text: "if (i == 5)", correct: true },
     ],
   },
   {
-    question: "How to write an IF statement for executing some code if \"i\" is NOT equal to 5?",
+    question:
+      'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
     answers: [
-        { text: "if (i != 5)", correct: true },
-        { text: "if (i<>5)", correct: false },
-        { text: "if i =! 5 then", correct: false },
-        { text: "if i<>5", correct: false }
+      { text: "if (i != 5)", correct: true },
+      { text: "if (i<>5)", correct: false },
+      { text: "if i =! 5 then", correct: false },
+      { text: "if i<>5", correct: false },
     ],
   },
   {
     question: "How can you add a comment in a JavaScript?",
     answers: [
-        { text: "<!--This is a comment-->", correct: false },
-        { text: "'This is a comment", correct: false },
-        { text: "//This is a comment", correct: true },
-        { text: "!!This is a comment!!", correct: false }
+      { text: "<!--This is a comment-->", correct: false },
+      { text: "'This is a comment", correct: false },
+      { text: "//This is a comment", correct: true },
+      { text: "!!This is a comment!!", correct: false },
     ],
   },
   {
     question: "How do you round the number 7.25, to the nearest integer?",
     answers: [
-        { text: "Math.rnd(7.25)", correct: false },
-        { text: "rnd(7.25)", correct: false },
-        { text: "Math.round(7.25)", correct: true },
-        { text: "round(7.25)", correct: false }
+      { text: "Math.rnd(7.25)", correct: false },
+      { text: "rnd(7.25)", correct: false },
+      { text: "Math.round(7.25)", correct: true },
+      { text: "round(7.25)", correct: false },
     ],
   },
   {
     question: "How do you find the number with the highest value of x and y?",
     answers: [
-        { text: "ceil(x,y)", correct: false },
-        { text: "Math.ceil(x,y)", correct: false },
-        { text: "Math.max(x,y)", correct: true },
-        { text: "top(x,y)", correct: false }
+      { text: "ceil(x,y)", correct: false },
+      { text: "Math.ceil(x,y)", correct: false },
+      { text: "Math.max(x,y)", correct: true },
+      { text: "top(x,y)", correct: false },
     ],
   },
 ];
@@ -136,22 +138,21 @@ function countdown() {
     }
   }, 1000);
 }
-var saveUser = function(){
-    localStorage.setItem("user", JSON.stringify(user));
+var saveUser = function () {
+  localStorage.setItem("user", JSON.stringify(user));
 };
 
-var loadUser = function() {
-    var savedUser = localStorage.getItem("user");
-    if (!savedUser) {
-        console.log("triggered");
-        return false;
-    }
-    savedUser = JSON.parse(savedUser);
-    for (var i = 0; i < savedUser.length; i++){
-        user.push(savedUser[i]);
-    }
-    
-}
+var loadUser = function () {
+  var savedUser = localStorage.getItem("user");
+  if (!savedUser) {
+    console.log("triggered");
+    return false;
+  }
+  savedUser = JSON.parse(savedUser);
+  for (var i = 0; i < savedUser.length; i++) {
+    user.push(savedUser[i]);
+  }
+};
 
 var endScreen = function () {
   if (countdownEl.classList != "hidden") {
@@ -184,22 +185,19 @@ var endScreen = function () {
     saveUser();
     retryBtnEl.classList.remove("hidden");
     highScoresBtnEl.classList.remove("hidden");
-  }  
+  }
 };
 
 var randomQuestionSelector = function () {
   if (randomArray.length === 10) {
-    console.log("ended random");
     endScreen();
   } else {
     var z = 0;
     var defineZ = function () {
       z = Math.floor(Math.random() * 10);
       if (randomArray.includes(z)) {
-        console.log("passed 1");
         defineZ();
       } else {
-        console.log("passed 2");
         x = z;
         randomArray.push(z);
       }
@@ -224,8 +222,6 @@ var answerBtnClicked = function (event) {
 };
 
 var populateAnswers = function () {
-  var n = questionBank[x].answers.length -3;
-  for (var i = 0; i < n; i++) {
     let buttonEl = document.createElement("button");
     buttonEl.className = "btn answer-btn";
     let buttonElText = document.createTextNode(questionBank[x].answers[y].text);
@@ -237,7 +233,6 @@ var populateAnswers = function () {
     buttonEl.appendChild(buttonElText);
     answerEl.appendChild(buttonEl);
     y++;
-  }
 };
 
 var populateQuestion = function () {
@@ -289,36 +284,36 @@ var submitBtnClicked = function (event) {
   endScreen();
 };
 
-var showScoreboard = function (){
-
-    user.sort(function(a, b) {
-        return b.score - a.score;
-    });
-    //hide endgame screen
-    endScreenEl.classList.add("hidden");
-    highScoresBtnEl.classList.add("hidden");
-    //show scoreboard
-    scoreboardEl.classList.remove("hidden");
-    for (var i = 0; i < user.length; i++){
-        if (i === 10){
-            break;
-        }
-        let listEl = document.createElement("li");
-        let listElText = document.createTextNode(user[i].username + ": " + user[i].score);
-        console.log(listElText);
-        // listEl.innerHTML = user[i].username + ": " + user[i].score;
-        listEl.appendChild(listElText);
-        scoreboardListEl.append(listEl);        
+var showScoreboard = function () {
+  user.sort(function (a, b) {
+    return b.score - a.score;
+  });
+  //hide endgame screen
+  endScreenEl.classList.add("hidden");
+  highScoresBtnEl.classList.add("hidden");
+  //show scoreboard
+  scoreboardEl.classList.remove("hidden");
+  for (var i = 0; i < user.length; i++) {
+    if (i === 10) {
+      break;
     }
+    let listEl = document.createElement("li");
+    let listElText = document.createTextNode(
+      user[i].username + ": " + user[i].score
+    );
 
-}
+    // listEl.innerHTML = user[i].username + ": " + user[i].score;
+    listEl.appendChild(listElText);
+    scoreboardListEl.append(listEl);
+  }
+};
 
 var clearQuestion = function () {
   var removeQuestion = document.getElementById("remove-later");
   removeQuestion.remove();
 };
 
-var clearAnswers = function () {
+var clearrAnswers = function () {
   var removeAnswers = document.getElementById("answer-buttons");
   removeAnswers.innerHTML = "";
 };
@@ -328,8 +323,3 @@ nextBtnEl.addEventListener("click", nextBtnClicked);
 retryBtnEl.addEventListener("click", retryBtnClicked);
 submitBtnEl.addEventListener("click", submitBtnClicked);
 highScoresBtnEl.addEventListener("click", showScoreboard);
-// things left to do
-//make high score page
-//create high score sorting
-// load high scores to page
-// style everything

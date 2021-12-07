@@ -10,6 +10,20 @@
   font-size: 62.5%;
 }
 
+body {
+    background: #333333;
+    background-image: url('/assets/images/background.gif');
+    background-size: cover;
+    color: var(--tertiary);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+  }
+
 .btn {
   margin: 10px;
   display: block;
