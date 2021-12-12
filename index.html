@@ -11,7 +11,7 @@
     <main>
     <!--main content shell-->
     <div class="container">
-      <div id="instructions" class="instructions flex">
+      <div id="instructions" class="instructions">
         <h1>Welcome to CodeQuiz!</h1>
         <p>
           Answer the question correctly = highScore++<br />Answer the question
@@ -19,49 +19,49 @@
         </p>
       </div>
       <!--quiz content-->
-      <div id="quiz-content" class="flex">
+      <div id="quiz-content" class="">
           <div id="question-container" class="hidden">
           <!--questions-->
           <div id="question"></div>
           <!--answers-->
-          <div id="answer-buttons" class="btn-grid flex"></div>
+          <div id="answer-buttons" class="btn-grid"></div>
         </div>
         <!--correct answer prompt-->
-        <div id="correct-prompt" class="correct-prompt hidden flex">
+        <div id="correct-prompt" class="hidden center">
           <h2>Correct!</h2>
         </div>
         <!--wrong answer prompt-->
-        <div id="wrong-prompt" class="wrong-prompt hidden flex">
+        <div id="wrong-prompt" class="hidden center">
           <h2>Wrong!</h2>
           <h3>The Correct Answer Was:</h3>
           <h4 id="return-correct"></h4>
         </div>
-        <div id="end-screen" class="end-screen hidden flex">
+        <div id="end-screen" class="hidden center">
             <h1>GAME OVER!</h1>
             <h1 id="submit-username" class="hidden">PLEASE SUBMIT USERNAME</h1>
             <h2>Your Score</h2>
             <h2 id="high-score"></h2>        
         </div>
       </div>
-      <div id="scoreboard" class="scoreboard hidden">
+      <div id="scoreboard" class="hidden center">
           <h1>THE TOP 10</h1>
           <ul id="scoreboard-list" class="scoreboard-list"></ul>
       </div>
       <!--main quiz nav buttons-->
-      <div class="controls flex">
-          <form id="user-name-form" class="user-name-form" name="form1" method="POST">
-            <div class="input-group">
+      <div class="center">
+          <form id="user-name-form" class="" name="form1" method="POST">
+            <div class="">
                 <label for="user-name">User Name</label>
                 <input type="text" name="user-name" id="user-name" placeholder="Get Creative" />
               </div>
-              <button id="submit-btn" class="submit-btn btn hidden">SUBMIT</button>
+              <button id="submit-btn" class="btn hidden">SUBMIT</button>
           </form>
-        <button id="start-btn" class="start-btn btn ">START</button>
-        <button id="next-btn" class="next-btn btn hidden">NEXT</button>
-        <button id="retry-btn" class="retry-btn btn hidden">RETRY?</button>
-        <button id="high-scores" class="high-scores-btn btn hidden">HIGH SCORES</button>
+        <button id="start-btn" class="btn">START</button>
+        <button id="next-btn" class="btn hidden">NEXT</button>
+        <button id="retry-btn" class="btn hidden">RETRY?</button>
+        <button id="high-scores" class="btn hidden">HIGH SCORES</button>
       </div>
-      <div class="countdown"><h3 id="countdown"></h3></div>
+      <div class=""><h3 id="countdown"></h3></div>
     </div>
     </main>
     <script src="./assets/js/script.js"></script>
