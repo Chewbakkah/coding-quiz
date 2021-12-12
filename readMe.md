@@ -21,3 +21,5 @@ In order to pass the user's info to the local storage a user name is required. T
 
 Live Link:
 https://chewbakkah.github.io/coding-quiz/
+
+![Capture4](https://user-images.githubusercontent.com/92648393/145704055-c149aede-6d9d-4deb-8efb-b620b7093fc1.JPG)
